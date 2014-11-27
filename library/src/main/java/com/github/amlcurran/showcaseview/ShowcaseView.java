@@ -208,7 +208,11 @@ public class ShowcaseView extends RelativeLayout
             if (bitmapBuffer != null) {
                 bitmapBuffer.recycle();
             }
-            bitmapBuffer = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+            int width = getMeasuredWidth();
+            int height = getMeasuredHeight();
+            if (width > 0 && height > 0) {
+                bitmapBuffer = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+            }
         }
     }
 
@@ -537,7 +541,7 @@ public class ShowcaseView extends RelativeLayout
 
         /**
          * Set a listener which will override the button clicks.
-         * <p/>
+         * <p>
          * Note that you will have to manually hide the ShowcaseView
          */
         public Builder setOnClickListener(OnClickListener onClickListener) {
@@ -548,7 +552,7 @@ public class ShowcaseView extends RelativeLayout
         /**
          * Don't make the ShowcaseView block touches on itself. This doesn't
          * block touches in the showcased area.
-         * <p/>
+         * <p>
          * By default, the ShowcaseView does block touches
          */
         public Builder doNotBlockTouches() {
@@ -559,7 +563,7 @@ public class ShowcaseView extends RelativeLayout
         /**
          * Make this ShowcaseView hide when the user touches outside the showcased area.
          * This enables {@link #doNotBlockTouches()} as well.
-         * <p/>
+         * <p>
          * By default, the ShowcaseView doesn't hide on touch.
          */
         public Builder hideOnTouchOutside() {
