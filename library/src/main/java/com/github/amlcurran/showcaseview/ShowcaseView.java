@@ -320,6 +320,7 @@ public class ShowcaseView extends RelativeLayout
         if (bitmapBuffer != null && !bitmapBuffer.isRecycled()) {
             bitmapBuffer.recycle();
             bitmapBuffer = null;
+            System.gc();
         }
     }
 
